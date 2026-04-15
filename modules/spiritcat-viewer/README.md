@@ -1,35 +1,42 @@
 ﻿# SpiritCat Viewer Module
 
-Standalone frontend module for showcasing a single `.glb` asset with a premium intro transition and a demo blockchain certification panel.
+Standalone frontend module for showcasing three `.glb` assets with:
+- a shared repository landing page (`LingMao Spirit Vault`)
+- three separate exhibition HTML pages
+- premium intro transition + demo blockchain certification panel per model
 
 ## Folder Structure
 
 ```text
 modules/spiritcat-viewer
-?? index.html
-?? vite.config.js
-?? public/
-?? ?? assets/
-??    ?? models/
-??       ?? README.md        (place lingmao-spiritcat-guardian.glb here)
-?? src/
-   ?? main.js
-   ?? styles.css
-   ?? data/
-   ?? ?? certification.js
-   ?? viewer/
-      ?? SpiritCatViewer.js
+├─ index.html                 # repository page (LingMao Spirit Vault)
+├─ guardian.html              # model page 1
+├─ hangzhou.html              # model page 2
+├─ classic.html               # model page 3
+├─ vite.config.js
+├─ public/
+│  └─ assets/
+│     └─ models/
+│        ├─ lingmao-spiritcat-guardian.glb
+│        ├─ lingmao-spiritcat-hangzhou.glb
+│        ├─ lingmao-spiritcat-classic.glb
+│        └─ README.md
+└─ src/
+   ├─ styles.css
+   ├─ repository-page.js
+   ├─ viewer-page.js
+   ├─ data/
+   │  └─ models.js
+   └─ viewer/
+      └─ SpiritCatViewer.js
 ```
 
-## Model Placement
+## Entry URLs
 
-Add your model file here:
-
-`modules/spiritcat-viewer/public/assets/models/lingmao-spiritcat-guardian.glb`
-
-The viewer uses this relative path so it works on GitHub Pages:
-
-`./assets/models/lingmao-spiritcat-guardian.glb`
+- Vault page: `./index.html`
+- Guardian exhibition: `./guardian.html`
+- Hangzhou exhibition: `./hangzhou.html`
+- Classic exhibition: `./classic.html`
 
 ## Run Locally
 
@@ -39,13 +46,11 @@ From repository root:
 npm exec -- vite --config modules/spiritcat-viewer/vite.config.js
 ```
 
-Then open:
+Open:
 
 `http://localhost:5188`
 
 ## Build
-
-From repository root:
 
 ```powershell
 npm exec -- vite build --config modules/spiritcat-viewer/vite.config.js
@@ -63,6 +68,6 @@ npm exec -- vite preview --config modules/spiritcat-viewer/vite.config.js
 
 ## GitHub Pages Notes
 
-- This module is frontend-only and static-safe.
-- `base: './'` is configured for GitHub Pages subpath compatibility.
-- Deploy the generated `modules/spiritcat-viewer/dist` folder as your Pages artifact when publishing this module independently.
+- Frontend only; static-safe.
+- Uses relative paths and `base: './'` for Pages compatibility.
+- Multi-page build includes `index`, `guardian`, `hangzhou`, and `classic`.

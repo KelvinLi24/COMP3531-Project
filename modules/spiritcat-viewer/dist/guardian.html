@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LingMao SpiritCat Guardian showcase page." />
+    <title>SpiritCat Guardian Showcase</title>
+    <script type="module" crossorigin src="./assets/models-ec2pdXr1.js"></script>
+    <script type="module" crossorigin src="./assets/viewer-page-yqG1OycC.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/models-DzDd5xd2.css">
+  </head>
+  <body data-model-id="guardian">
+    <div id="app">
+      <section id="intro-screen" class="intro-screen" aria-label="Asset acquisition transition">
+        <div class="intro-glow" aria-hidden="true"></div>
+        <div class="intro-particles" aria-hidden="true">
+          <span class="intro-particle particle-1"></span>
+          <span class="intro-particle particle-2"></span>
+          <span class="intro-particle particle-3"></span>
+          <span class="intro-particle particle-4"></span>
+          <span class="intro-particle particle-5"></span>
+          <span class="intro-particle particle-6"></span>
+        </div>
+        <div class="intro-card">
+          <p class="intro-kicker">LingMao Digital Collectible</p>
+          <h1>Your SpiritCat is now part of your metaverse world.</h1>
+          <p class="intro-subtitle">Asset successfully registered to your collection.</p>
+          <div class="intro-actions">
+            <button id="view-asset-button" class="view-asset-button" type="button">View Asset</button>
+            <p id="intro-countdown" class="intro-countdown">Opening viewer in 6s...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="viewer-screen" class="viewer-screen viewer-screen--hidden" aria-hidden="true">
+        <header class="viewer-header">
+          <a class="back-button" href="./index.html">Back to Vault</a>
+
+          <div class="viewer-title-wrap">
+            <p class="viewer-kicker">LingMao Showcase Module</p>
+            <h2 id="asset-title">Verified Digital Asset</h2>
+          </div>
+
+          <span class="viewer-badge">Demo Verified</span>
+        </header>
+
+        <main class="viewer-layout">
+          <section class="viewer-stage" aria-label="SpiritCat 3D viewer stage">
+            <div id="viewer-canvas" class="viewer-canvas"></div>
+            <div id="viewer-loading" class="viewer-overlay viewer-overlay--loading">
+              <div class="loading-ring"></div>
+              <p class="loading-title">Preparing SpiritCat Asset</p>
+              <p id="loading-progress" class="loading-progress">Loading 0%</p>
+            </div>
+            <div id="viewer-error" class="viewer-overlay viewer-overlay--error is-hidden">
+              <p class="error-title">Model Unavailable</p>
+              <p id="error-body" class="error-body"></p>
+            </div>
+            <p class="interaction-hint">Interact: rotate, zoom, and inspect details</p>
+          </section>
+
+          <aside class="cert-panel" aria-label="Blockchain Certification">
+            <div class="cert-panel-header">
+              <p class="cert-kicker">Blockchain Certification</p>
+              <h3 id="panel-title">SpiritCat Record</h3>
+            </div>
+            <dl id="certification-grid" class="cert-grid"></dl>
+            <p class="cert-note">This verification record is for demonstration purposes only.</p>
+          </aside>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

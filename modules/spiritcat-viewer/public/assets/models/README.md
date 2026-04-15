@@ -1,11 +1,10 @@
-﻿Place your GLB model here with this exact filename:
+﻿Place GLB models in this folder.
 
-`lingmao-spiritcat-guardian.glb`
+Current filenames used by the demo pages:
+- lingmao-spiritcat-guardian.glb
+- lingmao-spiritcat-hangzhou.glb
+- lingmao-spiritcat-classic.glb
 
-Expected path:
+Path:
 
-`modules/spiritcat-viewer/public/assets/models/lingmao-spiritcat-guardian.glb`
-
-The viewer loads it using the relative URL:
-
-`./assets/models/lingmao-spiritcat-guardian.glb`
+`modules/spiritcat-viewer/public/assets/models/`

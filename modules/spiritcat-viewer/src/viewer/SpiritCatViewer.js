@@ -39,8 +39,8 @@ export class SpiritCatViewer {
     const height = Math.max(1, this.container.clientHeight);
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x031018);
-    this.scene.fog = new THREE.Fog(0x031018, 9, 24);
+    this.scene.background = new THREE.Color(0x08202b);
+    this.scene.fog = new THREE.Fog(0x08202b, 12, 30);
 
     this.camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 120);
     this.camera.position.set(2.8, 1.9, 3.5);
@@ -50,7 +50,7 @@ export class SpiritCatViewer {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.08;
+    this.renderer.toneMappingExposure = 1.28;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -74,10 +74,10 @@ export class SpiritCatViewer {
   }
 
   addLighting() {
-    const hemisphere = new THREE.HemisphereLight(0x96eeff, 0x10242b, 0.8);
+    const hemisphere = new THREE.HemisphereLight(0xb9f5ff, 0x1a2e34, 1.15);
     this.scene.add(hemisphere);
 
-    const keyLight = new THREE.DirectionalLight(0xd7f5ff, 1.2);
+    const keyLight = new THREE.DirectionalLight(0xe5f9ff, 1.85);
     keyLight.position.set(3.2, 5.4, 4.6);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.set(2048, 2048);
@@ -89,11 +89,15 @@ export class SpiritCatViewer {
     keyLight.shadow.camera.bottom = -5;
     this.scene.add(keyLight);
 
-    const rimLight = new THREE.PointLight(0x58dbe5, 2.2, 20, 2);
+    const fillLight = new THREE.DirectionalLight(0xbbefff, 0.85);
+    fillLight.position.set(-3, 3.2, 2.4);
+    this.scene.add(fillLight);
+
+    const rimLight = new THREE.PointLight(0x73e8f5, 2.8, 22, 2);
     rimLight.position.set(-4, 2.2, -3.8);
     this.scene.add(rimLight);
 
-    const goldKick = new THREE.PointLight(0xe7be7a, 1.3, 16, 2);
+    const goldKick = new THREE.PointLight(0xf2cb89, 1.7, 18, 2);
     goldKick.position.set(2.2, 1.2, 2);
     this.scene.add(goldKick);
   }
@@ -172,7 +176,7 @@ export class SpiritCatViewer {
       },
       () => {
         this.onError?.(
-          'Unable to load ./assets/models/spiritcat.glb. Add your GLB file to modules/spiritcat-viewer/public/assets/models/spiritcat.glb.'
+          `Unable to load ${this.modelPath}. Confirm the model exists under modules/spiritcat-viewer/public/assets/models/.`
         );
       }
     );

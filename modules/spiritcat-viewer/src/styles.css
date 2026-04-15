@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
 
 :root {
   --bg-0: #020b10;
@@ -36,6 +36,124 @@ body {
 
 .is-hidden {
   display: none !important;
+}
+
+.vault-page {
+  overflow-x: hidden;
+}
+
+.vault-header {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(1.2rem, 4vw, 2.8rem) clamp(1rem, 3vw, 2rem) 0;
+  text-align: center;
+}
+
+.vault-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--teal-bright);
+}
+
+.vault-header h1 {
+  margin: 0.6rem 0 0;
+  font-family: 'Sora', 'Segoe UI', sans-serif;
+  font-size: clamp(1.8rem, 4.1vw, 3rem);
+  color: #f3fbff;
+}
+
+.vault-subtitle {
+  margin: 0.8rem auto 0;
+  max-width: 56ch;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.vault-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.vault-card {
+  border-radius: 18px;
+  border: 1px solid rgba(124, 219, 236, 0.28);
+  background: linear-gradient(145deg, rgba(8, 30, 41, 0.82), rgba(3, 13, 19, 0.92));
+  box-shadow: var(--shadow-soft);
+  padding: 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.vault-card-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  color: var(--teal-mid);
+}
+
+.vault-card h2 {
+  margin: 0;
+  font-size: 1.22rem;
+  font-family: 'Sora', 'Segoe UI', sans-serif;
+}
+
+.vault-card-subtitle {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.vault-card-meta {
+  margin: 0;
+  display: grid;
+  gap: 0.52rem;
+}
+
+.vault-card-meta div {
+  border: 1px solid rgba(123, 214, 229, 0.2);
+  border-radius: 12px;
+  background: rgba(9, 34, 45, 0.55);
+  padding: 0.55rem 0.62rem;
+}
+
+.vault-card-meta dt {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.66rem;
+  color: #87bcc7;
+}
+
+.vault-card-meta dd {
+  margin: 0.22rem 0 0;
+  font-size: 0.82rem;
+  color: #ddf0f4;
+}
+
+.vault-enter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(228, 192, 123, 0.72);
+  background: linear-gradient(120deg, rgba(69, 182, 201, 0.3), rgba(226, 188, 117, 0.3));
+  color: #fff3d2;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  min-height: 42px;
+}
+
+.vault-enter:hover,
+.vault-enter:focus-visible {
+  border-color: rgba(255, 224, 154, 0.95);
 }
 
 .intro-screen {
@@ -81,40 +199,12 @@ body {
   animation: floatParticle 5.8s ease-in-out infinite;
 }
 
-.particle-1 {
-  top: 22%;
-  left: 16%;
-}
-
-.particle-2 {
-  top: 68%;
-  left: 22%;
-  animation-delay: 0.7s;
-}
-
-.particle-3 {
-  top: 34%;
-  left: 78%;
-  animation-delay: 1.2s;
-}
-
-.particle-4 {
-  top: 72%;
-  left: 72%;
-  animation-delay: 1.8s;
-}
-
-.particle-5 {
-  top: 18%;
-  left: 52%;
-  animation-delay: 2.4s;
-}
-
-.particle-6 {
-  top: 82%;
-  left: 54%;
-  animation-delay: 3.1s;
-}
+.particle-1 { top: 22%; left: 16%; }
+.particle-2 { top: 68%; left: 22%; animation-delay: 0.7s; }
+.particle-3 { top: 34%; left: 78%; animation-delay: 1.2s; }
+.particle-4 { top: 72%; left: 72%; animation-delay: 1.8s; }
+.particle-5 { top: 18%; left: 52%; animation-delay: 2.4s; }
+.particle-6 { top: 82%; left: 54%; animation-delay: 3.1s; }
 
 .intro-card {
   position: relative;
@@ -166,14 +256,6 @@ body {
   font-weight: 600;
   padding: 0.68rem 1.34rem;
   cursor: pointer;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-
-.view-asset-button:hover,
-.view-asset-button:focus-visible {
-  transform: translateY(-1px);
-  border-color: rgba(255, 219, 146, 0.9);
-  box-shadow: 0 8px 22px rgba(18, 125, 146, 0.3);
 }
 
 .intro-countdown {
@@ -221,16 +303,12 @@ body {
   border-radius: 999px;
   background: rgba(6, 28, 38, 0.72);
   color: var(--text-main);
-  cursor: pointer;
+  text-decoration: none;
   padding: 0.52rem 1rem;
   font-size: 0.86rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.back-button:hover,
-.back-button:focus-visible {
-  border-color: rgba(225, 190, 118, 0.78);
-  transform: translateY(-1px);
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .viewer-title-wrap {
@@ -249,7 +327,6 @@ body {
   margin: 0.2rem 0 0;
   font-family: 'Sora', 'Segoe UI', sans-serif;
   font-size: clamp(1.02rem, 1.9vw, 1.35rem);
-  color: #f4fcff;
 }
 
 .viewer-badge {
@@ -311,32 +388,10 @@ body {
   animation: spinRing 1s linear infinite;
 }
 
-.loading-title {
-  margin: 0;
-  color: #e7f9fb;
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
-}
-
-.loading-progress {
-  margin: 0;
-  color: #9dc1c9;
-  font-size: 0.84rem;
-}
-
-.error-title {
-  margin: 0;
-  color: #ffd6cd;
-  font-size: 1rem;
-}
-
-.error-body {
-  margin: 0;
-  max-width: 38ch;
-  color: #ffbcb0;
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
+.loading-title { margin: 0; color: #e7f9fb; font-size: 0.95rem; }
+.loading-progress { margin: 0; color: #9dc1c9; font-size: 0.84rem; }
+.error-title { margin: 0; color: #ffd6cd; font-size: 1rem; }
+.error-body { margin: 0; max-width: 38ch; color: #ffbcb0; font-size: 0.88rem; line-height: 1.5; }
 
 .interaction-hint {
   position: absolute;
@@ -359,33 +414,13 @@ body {
   box-shadow: var(--shadow-soft);
   padding: clamp(0.9rem, 2vw, 1.2rem);
   backdrop-filter: blur(9px);
-  align-self: stretch;
 }
 
-.cert-panel-header {
-  margin-bottom: 0.9rem;
-}
+.cert-panel-header { margin-bottom: 0.9rem; }
+.cert-kicker { margin: 0; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.68rem; color: var(--teal-mid); }
+.cert-panel-header h3 { margin: 0.3rem 0 0; font-family: 'Sora', 'Segoe UI', sans-serif; font-size: 1.2rem; }
 
-.cert-kicker {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.68rem;
-  color: var(--teal-mid);
-}
-
-.cert-panel-header h3 {
-  margin: 0.3rem 0 0;
-  font-family: 'Sora', 'Segoe UI', sans-serif;
-  font-size: 1.2rem;
-  color: #f2fbff;
-}
-
-.cert-grid {
-  margin: 0;
-  display: grid;
-  gap: 0.62rem;
-}
+.cert-grid { margin: 0; display: grid; gap: 0.62rem; }
 
 .cert-item {
   margin: 0;
@@ -395,21 +430,8 @@ body {
   padding: 0.62rem 0.68rem;
 }
 
-.cert-item dt {
-  margin: 0;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #85bac4;
-}
-
-.cert-item dd {
-  margin: 0.26rem 0 0;
-  font-size: 0.84rem;
-  color: #def0f4;
-  line-height: 1.45;
-  word-break: break-word;
-}
+.cert-item dt { margin: 0; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #85bac4; }
+.cert-item dd { margin: 0.26rem 0 0; font-size: 0.84rem; color: #def0f4; line-height: 1.45; word-break: break-word; }
 
 .status-pill {
   display: inline-flex;
@@ -435,26 +457,29 @@ body {
   line-height: 1.45;
 }
 
+.config-error {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #ff9f90;
+  border-radius: 10px;
+  background: rgba(49, 11, 11, 0.6);
+}
+
 @keyframes floatParticle {
   0%,
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.45;
-  }
-
-  50% {
-    transform: translateY(-18px) scale(1.3);
-    opacity: 0.95;
-  }
+  100% { transform: translateY(0) scale(1); opacity: 0.45; }
+  50% { transform: translateY(-18px) scale(1.3); opacity: 0.95; }
 }
 
 @keyframes spinRing {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 @media (max-width: 1024px) {
+  .vault-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .viewer-layout {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(360px, 56vh) auto;
@@ -463,13 +488,13 @@ body {
   .viewer-stage {
     min-height: min(56vh, 560px);
   }
-
-  .cert-panel {
-    min-height: 260px;
-  }
 }
 
 @media (max-width: 760px) {
+  .vault-grid {
+    grid-template-columns: 1fr;
+  }
+
   .viewer-header {
     flex-wrap: wrap;
     justify-content: center;
@@ -477,11 +502,5 @@ body {
 
   .interaction-hint {
     display: none;
-  }
-
-  .view-asset-button,
-  .back-button {
-    min-height: 42px;
-    padding: 0.62rem 1rem;
   }
 }
