@@ -35,6 +35,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Build SpiritCat viewer module
+        run: npm exec -- vite build --config modules/spiritcat-viewer/vite.config.js
+
+      - name: Copy SpiritCat viewer into Pages artifact
+        run: |
+          mkdir -p dist/spiritcat-viewer
+          cp -r modules/spiritcat-viewer/dist/* dist/spiritcat-viewer/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
