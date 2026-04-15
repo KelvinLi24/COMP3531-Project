@@ -161,3 +161,21 @@ Initial featured prototype heritage cases:
 
 - Hangzhou BanShan Mud Cat
 - Yunnan Wa Cat
+
+## Deploy to GitHub Pages
+
+If you open the root `index.html` directly by double-click, it may show a blank page because this project needs Vite build output.
+
+Use this deployment flow instead:
+
+1. Push this repository to GitHub (default branch `main` or `master`).
+2. In GitHub repository settings, go to **Pages** and set **Source** to **GitHub Actions**.
+3. Push a commit; workflow `.github/workflows/deploy-pages.yml` will build and deploy `dist` automatically.
+4. Open your published site URL from GitHub Pages.
+
+For local production preview:
+
+```powershell
+npm.cmd run build
+npm.cmd run preview
+```
