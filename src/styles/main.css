@@ -450,26 +450,6 @@ body {
   opacity: 1;
 }
 
-#deploy-test-banner {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  z-index: 35;
-  max-width: min(520px, calc(100vw - 24px));
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: rgba(4, 20, 29, 0.78);
-  border: 1px solid rgba(223, 186, 102, 0.72);
-  color: #f7e9c3;
-  font-size: 12px;
-  line-height: 1.45;
-  pointer-events: none;
-}
-
-#deploy-test-banner p {
-  margin: 0;
-}
-
 @keyframes portalPulse {
   0% {
     opacity: 0;
