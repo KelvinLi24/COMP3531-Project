@@ -15,6 +15,7 @@ export class SpiritCatViewer {
     this.renderer = null;
     this.controls = null;
     this.clock = new THREE.Clock();
+    this.cameraOffset = new THREE.Vector3(1, 0.55, 1.15);
 
     this.rootGroup = null;
     this.modelGroup = null;
@@ -62,7 +63,7 @@ export class SpiritCatViewer {
     this.controls.minDistance = 1.5;
     this.controls.maxDistance = 8.5;
     this.controls.maxPolarAngle = Math.PI * 0.49;
-    this.controls.target.set(0, 0.8, 0);
+    this.controls.target.set(0, 0.92, 0);
 
     this.rootGroup = new THREE.Group();
     this.modelGroup = new THREE.Group();
@@ -124,7 +125,7 @@ export class SpiritCatViewer {
         metalness: 0.28
       })
     );
-    base.position.y = 0.17;
+    base.position.y = 0.08;
     base.receiveShadow = true;
     base.castShadow = true;
     this.scene.add(base);
@@ -140,7 +141,7 @@ export class SpiritCatViewer {
       })
     );
     ring.rotation.x = Math.PI / 2;
-    ring.position.y = 0.35;
+    ring.position.y = 0.24;
     this.pedestalGlow = ring;
     this.scene.add(ring);
   }
@@ -191,14 +192,38 @@ export class SpiritCatViewer {
 
     // Normalize model size so different GLB exports still frame well in this fixed showcase layout.
     const maxDimension = Math.max(size.x, size.y, size.z) || 1;
-    const desiredSize = 2.25;
+    const desiredSize = 2.1;
     const scale = desiredSize / maxDimension;
     model.scale.setScalar(scale);
 
     const normalizedBox = new THREE.Box3().setFromObject(model);
-    model.position.y -= normalizedBox.min.y - 0.36;
+    model.position.y -= normalizedBox.min.y - 0.28;
+    this.frameModel(model);
+  }
 
-    this.controls.target.set(0, 0.82, 0);
+  frameModel(model) {
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+
+    const halfFovY = THREE.MathUtils.degToRad(this.camera.fov * 0.5);
+    const fitHeightDistance = (size.y * 0.68) / Math.tan(halfFovY);
+    const fitWidthDistance =
+      ((size.x * 0.62) / Math.tan(halfFovY)) / Math.max(this.camera.aspect, 1);
+    const distance = Math.max(fitHeightDistance, fitWidthDistance, 2.5);
+
+    // Bias target slightly above center so ears/head keep safe top margin.
+    const targetY = center.y + size.y * 0.12;
+    this.controls.target.set(center.x, targetY, center.z);
+
+    this.camera.position.set(
+      center.x + this.cameraOffset.x * distance,
+      targetY + this.cameraOffset.y * distance,
+      center.z + this.cameraOffset.z * distance
+    );
+    this.camera.near = 0.1;
+    this.camera.far = Math.max(120, distance * 30);
+    this.camera.updateProjectionMatrix();
     this.controls.update();
   }
 
