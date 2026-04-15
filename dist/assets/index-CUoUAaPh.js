@@ -3886,6 +3886,12 @@ void main() {
         </p>
       </aside>
 
+      <div id="deploy-test-banner" aria-label="deployment test banner">
+        <p>DEPLOY TEST MARKER</p>
+        <p>BUILD VERSION: 2026-04-16-1</p>
+        <p>If you can read this, GitHub Pages is serving the latest build.</p>
+      </div>
+
       <div id="hover-tooltip" class="tooltip-hidden"></div>
       <div id="vr-status" class="status-hidden"></div>
       <div id="portal-flash"></div>
