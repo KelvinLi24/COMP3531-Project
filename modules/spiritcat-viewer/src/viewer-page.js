@@ -3,7 +3,7 @@ import { MODEL_CATALOG } from './data/models.js';
 import { SpiritCatViewer } from './viewer/SpiritCatViewer.js';
 
 const AUTO_ENTER_SECONDS = 6;
-const MIN_LOADING_MS = 1300;
+const MIN_LOADING_MS = 120;
 
 const modelId = document.body.dataset.modelId;
 const modelConfig = MODEL_CATALOG[modelId];
