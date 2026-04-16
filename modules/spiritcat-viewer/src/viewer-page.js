@@ -4,6 +4,7 @@ import { SpiritCatViewer } from './viewer/SpiritCatViewer.js';
 
 const AUTO_ENTER_SECONDS = 6;
 const MIN_LOADING_MS = 120;
+const MAX_LOADING_MS = 900;
 
 const modelId = document.body.dataset.modelId;
 const modelConfig = MODEL_CATALOG[modelId];
@@ -116,9 +117,22 @@ function openViewer() {
 
 function initializeViewerStage() {
   const loadingStartedAt = Date.now();
+  let loadingHidden = false;
   viewerLoading.classList.remove('is-hidden');
   viewerError.classList.add('is-hidden');
   loadingProgress.textContent = 'Loading 0%';
+
+  const hideLoading = () => {
+    if (loadingHidden) {
+      return;
+    }
+    loadingHidden = true;
+    viewerLoading.classList.add('is-hidden');
+  };
+
+  window.setTimeout(() => {
+    hideLoading();
+  }, MAX_LOADING_MS);
 
   viewerInstance = new SpiritCatViewer({
     container: viewerCanvas,
@@ -131,7 +145,7 @@ function initializeViewerStage() {
       const elapsed = Date.now() - loadingStartedAt;
       const delay = Math.max(0, MIN_LOADING_MS - elapsed);
       window.setTimeout(() => {
-        viewerLoading.classList.add('is-hidden');
+        hideLoading();
       }, delay);
     },
     onError: (message) => {
