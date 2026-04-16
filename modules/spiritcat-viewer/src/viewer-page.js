@@ -3,8 +3,8 @@ import { MODEL_CATALOG } from './data/models.js';
 import { SpiritCatViewer } from './viewer/SpiritCatViewer.js';
 
 const AUTO_ENTER_SECONDS = 6;
-const MIN_LOADING_MS = 120;
-const MAX_LOADING_MS = 900;
+const MIN_LOADING_FLOOR_MS = 80;
+const MIN_LOADING_CEILING_MS = 700;
 
 const modelId = document.body.dataset.modelId;
 const modelConfig = MODEL_CATALOG[modelId];
@@ -118,6 +118,8 @@ function openViewer() {
 function initializeViewerStage() {
   const loadingStartedAt = Date.now();
   let loadingHidden = false;
+  let totalBytes = 0;
+  let adaptiveMinLoadingMs = 220;
   viewerLoading.classList.remove('is-hidden');
   viewerError.classList.add('is-hidden');
   loadingProgress.textContent = 'Loading 0%';
@@ -130,20 +132,25 @@ function initializeViewerStage() {
     viewerLoading.classList.add('is-hidden');
   };
 
-  window.setTimeout(() => {
-    hideLoading();
-  }, MAX_LOADING_MS);
-
   viewerInstance = new SpiritCatViewer({
     container: viewerCanvas,
     modelPath: modelConfig.modelPath,
-    onProgress: (ratio) => {
+    onProgress: (ratio, progress) => {
+      if (progress?.total) {
+        totalBytes = progress.total;
+        const modelSizeMb = totalBytes / (1024 * 1024);
+        adaptiveMinLoadingMs = Math.max(
+          MIN_LOADING_FLOOR_MS,
+          Math.min(MIN_LOADING_CEILING_MS, Math.round(90 + modelSizeMb * 16))
+        );
+      }
       const percent = Math.round(Math.max(0, Math.min(100, (ratio || 0) * 100)));
       loadingProgress.textContent = `Loading ${percent}%`;
     },
     onReady: () => {
       const elapsed = Date.now() - loadingStartedAt;
-      const delay = Math.max(0, MIN_LOADING_MS - elapsed);
+      const settleMs = elapsed < 350 ? 120 : elapsed < 1200 ? 70 : 20;
+      const delay = Math.max(0, adaptiveMinLoadingMs - elapsed) + settleMs;
       window.setTimeout(() => {
         hideLoading();
       }, delay);

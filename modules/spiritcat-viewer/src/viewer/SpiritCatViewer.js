@@ -172,7 +172,10 @@ export class SpiritCatViewer {
       (event) => {
         if (event.total > 0) {
           const ratio = Math.min(1, event.loaded / event.total);
-          this.onProgress?.(ratio);
+          this.onProgress?.(ratio, {
+            loaded: event.loaded,
+            total: event.total
+          });
         }
       },
       () => {
